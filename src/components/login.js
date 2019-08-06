@@ -43,7 +43,7 @@ class NormalLoginForm extends React.Component {
             })(
               <Input
                 prefix={
-                  <Icon type="email" style={{ color: "rgba(0,0,0,.25)" }} />
+                  <Icon type="email" />
                 }
                 placeholder="Email"
                 onChange={this.handleChanges}

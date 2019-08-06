@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css'
 import './App.css'
-import cartReducer from './redux/reducers/cartReducer';
+import cartReducer from './redux/reducers/cart';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 

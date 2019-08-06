@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import {
   removeItem,
   addQuantity,
-  subtractQuantity
+  subtractQuantity, getItem
 } from "../redux/actions/cart";
 import Recipe  from "./recipe"
 // import Recipe from "./recipe";
@@ -22,7 +22,8 @@ class Cart extends Component {
     this.props.subtractQuantity(id);
   };
 
-  componentDidMount(){console.log("ini dari cart", this.props);
+  componentDidMount(){
+    console.log("ini dari cart", this.props);
   }
   render() {
     let addedItems = this.props.items.length ? (
@@ -30,7 +31,7 @@ class Cart extends Component {
         return (
           <li className="collection-item avatar" key={item.id}>
             <div className="item-img">
-              <img src={item.img} alt={item.img} className="" />
+              <img src={`${process.env.REACT_APP_API_URL}${item.imagePath}`} alt={item.img} className="" />
             </div>
 
             <div className="item-desc">
@@ -99,20 +100,20 @@ const mapStateToProps = state => {
     //addedItems: state.addedItems
   };
 };
-const mapDispatchToProps = dispatch => {
-  return {
-    removeItem: id => {
-      dispatch(removeItem(id));
-    },
-    addQuantity: id => {
-      dispatch(addQuantity(id));
-    },
-    subtractQuantity: id => {
-      dispatch(subtractQuantity(id));
-    }
-  };
-};
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     removeItem: id => {
+//       dispatch(removeItem(id));
+//     },
+//     addQuantity: id => {
+//       dispatch(addQuantity(id));
+//     },
+//     subtractQuantity: id => {
+//       dispatch(subtractQuantity(id));
+//     }
+//   };
+// };
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  {removeItem, addQuantity, subtractQuantity}
 )(Cart);

@@ -22,23 +22,25 @@ class Category extends Component {
           BWM stores and we will be happy to help.
         </p>
         <div class="column">
-          <Link to="./">
+          <Link to="/shop">
             <img
               style={{
                 width: "300px",
                 height: "300px",
-                borderRadius: "50%"
+                borderRadius: "50%",
+                border: "3px solid pink"
               }}
               src={CatImage}
               alt="cat"
             />
           </Link>
-          <Link to="./">
+          <Link to="/shop">
             <img
               style={{
                 width: "300px",
                 height: "300px",
-                borderRadius: "50%"
+                borderRadius: "50%",
+                border: "3px solid pink"
               }}
               src={DogImage}
               alt="dog"

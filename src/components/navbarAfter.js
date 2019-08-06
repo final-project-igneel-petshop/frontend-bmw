@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 // import Logo from '../images/logo.jpg'
- const Navbar = ()=>{
+ const NavbarAfter = ()=>{
     return(
             <nav style={{height:"100px", display:"flex", alignItems: "center"}}className="nav-wrapper">
                 <div className="container">
@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom'
                     <ul className="right">
                         <li><Link to="/category">Shop</Link></li>
                         <li><Link to="/login" >Log In</Link></li>
-                        <li><Link to="/cart"><i className="material-icons">shopping_cart</i></Link></li>
+                        {/* <li><Link to="/cart"><i className="material-icons">shopping_cart</i></Link></li> */}
                     </ul>
                 </div>
             </nav>
@@ -19,4 +19,4 @@ import { Link } from 'react-router-dom'
     )
 }
 
-export default Navbar;
+export default NavbarAfter;

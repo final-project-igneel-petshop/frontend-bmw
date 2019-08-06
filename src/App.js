@@ -7,25 +7,28 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import LogIn from "./pages/login";
 import SignUp from "./pages/signup";
 import Cart from "./components/cart";
-import Home from "./components/home";
+import Home from "./components/shopCat";
 import store from "./redux/store";
 import Navbar from './components/navbar'
 import Category from "./components/category";
-import homePage from "./components/homePage"
+import HomePage from "./components/homePage"
+import Details from "./components/productDetails"
 
 class App extends Component {
   render() {
     return (
-      <Provider style={{backgroundColor: "" }} store={store}>
+      <Provider store={store}>
         <Router>
         <Navbar/>
           <Switch>
-            <Route exact path="/" component={Home}/>
+          <Route path="/login" component={LogIn} />
+            <Route exact path="/" component={HomePage}/>
+            <Route path="/shop" component={Home}/>
             <Route path="/category" component={Category}/>
             <Route path="/signup" component={SignUp} />
-            <Route path="/login" component={LogIn} />
             <Route path="/cart" component={Cart} />
-          </Switch>
+            <Route path="/product/:id" component={Details}/>
+          </Switch>         
         </Router>
       </Provider>
     );

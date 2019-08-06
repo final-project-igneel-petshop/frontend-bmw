@@ -1,7 +1,7 @@
 import {combineReducers} from 'redux'
 import logInReducer from './login';
 import signUpReducer from './signup';
-import cartReducer from './cartReducer';
+import cartReducer from './cart';
 
 const rootReducer = combineReducers({
     signup: signUpReducer,

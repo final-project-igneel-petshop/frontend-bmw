@@ -3,6 +3,7 @@ import { Form, Input, Select, Checkbox, Button, message } from "antd";
 import { userSignUp } from "../../src/redux/actions/signup";
 import { connect } from "react-redux";
 import { withRouter, Redirect } from "react-router-dom";
+import NavbarAfter from "./navbarAfter";
 
 const { Option } = Select;
 // const AutoCompleteOption = AutoComplete.Option;
