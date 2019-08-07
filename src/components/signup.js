@@ -112,7 +112,7 @@ class RegistrationForm extends React.Component {
     return this.state.isSuccess === true ? (
       <Redirect to="/" />
     ) : (
-      <div>
+      <div >
       <Form {...formItemLayout} onSubmit={this.handleSubmit}>
         <Form.Item label="Fullname">
           {getFieldDecorator("fullname", {
@@ -139,7 +139,7 @@ class RegistrationForm extends React.Component {
             ]
           })(<Input />)}
         </Form.Item>
-        <Form.Item label="Password" hasFeedback>
+        <Form.Item  label="Password" hasFeedback>
           {getFieldDecorator("password", {
             rules: [
               {
@@ -172,7 +172,7 @@ class RegistrationForm extends React.Component {
             ]
           })(<Input />)}
         </Form.Item>
-        <Form.Item {...tailFormItemLayout}>
+        <Form.Item style={{padding:"0px"}}{...tailFormItemLayout}>
           {getFieldDecorator("agreement", {
             valuePropName: "checked"
           })(

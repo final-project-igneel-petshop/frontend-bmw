@@ -10,42 +10,15 @@ export class SignUp extends Component {
   render() {
     return (
       <div>
-        <div
-          style={{
-            width: 480,
-            margin: "0 auto",
-            padding: "30px 0px",
-            background: "#f5f5f5"
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              flexDirection: "column",
-              alignItems: "center"
-            }}
-          >
-            <h1>Sign Up</h1>
-            <div>
-              <WrappedRegistrationForm />
-            </div>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                flexDirection: "column",
-                alignItems: "center"
-              }}
-            >
-              <p style={{ marginBottom: 0 }}>
-                By signing up, you agree to BoWowMeow's
-              </p>
-              <p>
-                <b>Terms of Service & Privacy Policy.</b>
-              </p>
-            </div>
-          </div>
+        <div style={{ width:"800px",display:"flex", flexDirection:"column", marginLeft:"100px"}}>
+        <h1 style={{marginLeft:"400px"}}>Sign Up</h1>
+          <WrappedRegistrationForm />
+        <div>
+          <p>By signing up, you agree to BoWowMeow's</p>
+          <p>
+            <b>Terms of Service & Privacy Policy.</b>
+          </p>
+        </div>
         </div>
       </div>
     );

@@ -15,7 +15,6 @@ export class LogIn extends Component {
             width: 400,
             margin: "0 auto",
             padding: "30px 0px",
-            background: "#f5f5f5"
           }}
         >
           <div

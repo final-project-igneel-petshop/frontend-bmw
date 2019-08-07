@@ -5,6 +5,7 @@ import "materialize-css/dist/css/materialize.min.css";
 import ImageOne from "../images/cat.jpg";
 import ImageTwo from "../images/dog.jpg";
 import NavbarAfter from "./navbarAfter"
+import jwt from "jsonwebtoken"
 
 // var elem = document.querySelector(".carousel");
 // var instance = M.Carousel.init({
@@ -13,6 +14,9 @@ import NavbarAfter from "./navbarAfter"
 // });
 class HomePage extends Component {
   componentDidMount() {
+    const decoded = jwt.decode(localStorage.getItem("token"))
+    console.log(decoded);
+    
     const options = {
       duration: 300,
       onCycleTo: () => {
@@ -30,7 +34,6 @@ class HomePage extends Component {
 
     return (
       <div>
-        <NavbarAfter/>
         <div
           ref={Carousel => {
             this.Carousel = Carousel;

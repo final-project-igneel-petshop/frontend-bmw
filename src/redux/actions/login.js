@@ -1,6 +1,5 @@
 import axios from 'axios'
 import { message } from "antd"
-import {jwt} from "jsonwebtoken"
 
 export const userLogin = data => dispatch => {
         axios.post(`${process.env.REACT_APP_API_URL}/users/login`, data)
@@ -15,7 +14,8 @@ export const userLogin = data => dispatch => {
                     // password: res.data.user.password
                 }
             })
-            if(res.status == 200){
+            if(res.status === 200){
+                localStorage.setItem("token", res.data.data.token)
                 message.success(`Login as ${`user`}`, 1)
             }
             

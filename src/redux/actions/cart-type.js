@@ -5,3 +5,4 @@ export const ADD_QUANTITY = 'ADD_QUANTITY';
 export const ADD_SHIPPING = 'ADD_SHIPPING';
 export const GET_ITEM ='GET_ITEM'
 export const FIND_ONE ='FIND_ONE'
+export const CHECK_OUT = 'CHECK_OUT'
