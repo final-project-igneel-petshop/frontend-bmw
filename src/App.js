@@ -13,6 +13,7 @@ import Navbar from './components/navbar'
 import Category from "./components/category";
 import HomePage from "./components/homePage"
 import Details from "./components/productDetails"
+import CheckOut from "./components/checkOut";
 
 class App extends Component {
   render() {
@@ -28,6 +29,7 @@ class App extends Component {
             <Route path="/signup" component={SignUp} />
             <Route path="/cart" component={Cart} />
             <Route path="/product/:id" component={Details}/>
+            <Route path="/checkout" component={CheckOut}/>
           </Switch>         
         </Router>
       </Provider>

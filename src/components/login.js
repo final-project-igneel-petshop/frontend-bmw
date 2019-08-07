@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { withRouter, Redirect } from "react-router-dom";
 import { userLogin } from "../../src/redux/actions/login";
 
-
 class NormalLoginForm extends React.Component {
   state = {
     email: "",
@@ -42,9 +41,7 @@ class NormalLoginForm extends React.Component {
               rules: [{ required: true, message: "Please input your email!" }]
             })(
               <Input
-                prefix={
-                  <Icon type="email" />
-                }
+                prefix={<Icon type="email" />}
                 placeholder="Email"
                 onChange={this.handleChanges}
               />

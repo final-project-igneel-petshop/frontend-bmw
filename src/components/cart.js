@@ -4,9 +4,10 @@ import { Link } from "react-router-dom";
 import {
   removeItem,
   addQuantity,
-  subtractQuantity, getItem
+  subtractQuantity
 } from "../redux/actions/cart";
-import Recipe  from "./recipe"
+import Recipe from "./recipe";
+
 // import Recipe from "./recipe";
 class Cart extends Component {
   //to remove the item completely
@@ -22,16 +23,17 @@ class Cart extends Component {
     this.props.subtractQuantity(id);
   };
 
-  componentDidMount(){
-    console.log("ini dari cart", this.props);
-  }
   render() {
     let addedItems = this.props.items.length ? (
       this.props.items.map(item => {
         return (
           <li className="collection-item avatar" key={item.id}>
             <div className="item-img">
-              <img src={`${process.env.REACT_APP_API_URL}${item.imagePath}`} alt={item.img} className="" />
+              <img
+                src={`${process.env.REACT_APP_API_URL}${item.imagePath}`}
+                alt={item.img}
+                className=""
+              />
             </div>
 
             <div className="item-desc">
@@ -93,8 +95,6 @@ class Cart extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
-  
   return {
     items: state.cart.addedItems
   };

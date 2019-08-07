@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { addToCart } from "../redux/actions/cart";
 import CatImage from "../images/cat.jpg";
 import DogImage from "../images/dog.jpg";
 
@@ -21,7 +19,7 @@ class Category extends Component {
           BWM stores. If you are looking for a specific product, please call the
           BWM stores and we will be happy to help.
         </p>
-        <div class="column">
+        <div className="column">
           <Link to="/shop">
             <img
               style={{

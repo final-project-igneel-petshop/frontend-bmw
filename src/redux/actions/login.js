@@ -1,5 +1,8 @@
 import axios from 'axios'
+import { createBrowserHistory } from 'history';
 import { message } from "antd"
+
+const history = createBrowserHistory()
 
 export const userLogin = data => dispatch => {
         axios.post(`${process.env.REACT_APP_API_URL}/users/login`, data)
@@ -16,7 +19,9 @@ export const userLogin = data => dispatch => {
             })
             if(res.status === 200){
                 localStorage.setItem("token", res.data.data.token)
+                localStorage.setItem("isAuthenticated", true)
                 message.success(`Login as ${`user`}`, 1)
+                history.push('/')
             }
             
         })

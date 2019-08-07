@@ -17,7 +17,7 @@ class Home extends Component {
         <div className="card" key={item.id}>
           <div className="card-image">
             <Link to={`/product/${item.id}`}>
-              <img src={`${process.env.REACT_APP_API_URL}${item.imagePath}`} />
+              <img src={`${process.env.REACT_APP_API_URL}${item.imagePath}`} alt="cutty-cat"/>
             </Link>
 
             <div
@@ -31,7 +31,7 @@ class Home extends Component {
             </div>
           </div>
           <div className="card-content">
-            <a className="card-title">{item.title}</a>
+            <p className="card-title">{item.title}</p>
             <p>{item.desc}</p>
             <p>
               <b>Price: Rp {item.price}</b>

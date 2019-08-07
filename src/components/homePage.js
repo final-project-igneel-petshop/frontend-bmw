@@ -4,19 +4,9 @@ import { Link } from "react-router-dom";
 import "materialize-css/dist/css/materialize.min.css";
 import ImageOne from "../images/cat.jpg";
 import ImageTwo from "../images/dog.jpg";
-import NavbarAfter from "./navbarAfter"
-import jwt from "jsonwebtoken"
 
-// var elem = document.querySelector(".carousel");
-// var instance = M.Carousel.init({
-//   fullWidth: true,
-//   indicators: true
-// });
 class HomePage extends Component {
   componentDidMount() {
-    const decoded = jwt.decode(localStorage.getItem("token"))
-    console.log(decoded);
-    
     const options = {
       duration: 300,
       onCycleTo: () => {
@@ -30,8 +20,6 @@ class HomePage extends Component {
     M.Carousel.init(this.Carousel, options, test);
   }
   render() {
-    console.log(true);
-
     return (
       <div>
         <div
@@ -41,31 +29,27 @@ class HomePage extends Component {
           className="carousel"
           style={{ height: "100%" }}
         >
-          <div className="carousel carousel-slider center" style={{height:"700px"}}>
+          <div
+            className="carousel carousel-slider center"
+            style={{ height: "700px" }}
+          >
             <div className="carousel-fixed-item center">
-              <a>
-                <Link
-                  to="/shop"
-                  className="btn waves-effect white grey-text darken-text-2"
-                >
-                  Shop
-                </Link>
-              </a>
+              <Link
+                to="/shop"
+                className="btn waves-effect white grey-text darken-text-2"
+              >
+                Shop
+              </Link>
             </div>
-            <div className="carousel-item red white-text" href="#one!" >
+            <div className="carousel-item red white-text" href="#one!">
               {/* <h2>CATS</h2> */}
-              <img
-                src={ImageOne}
-            
-              />
+              <img src={ImageOne} alt="cutty-cat" />
               <div className="overlay">CATS</div>
             </div>
 
             <div className="carousel-item amber white-text" href="#two!">
               {/* <h2>DOGS</h2> */}
-              <img
-                src={ImageTwo}
-              />
+              <img src={ImageTwo} alt="cutty-dog" />
             </div>
           </div>
         </div>
@@ -76,7 +60,7 @@ class HomePage extends Component {
               display: "flex",
               justifyContent: "center",
               paddingTop: "25px",
-              marginTop:"0px"
+              marginTop: "0px"
             }}
           >
             About Us
@@ -89,7 +73,6 @@ class HomePage extends Component {
               marginLeft: "100px",
               marginRight: "100px",
               paddingBottom: "50px"
-              
             }}
           >
             Love the products sold at BWM Shop, but not Jakarta’s traffic? Or

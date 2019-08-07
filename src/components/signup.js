@@ -1,13 +1,8 @@
 import React from "react";
-import { Form, Input, Select, Checkbox, Button, message } from "antd";
+import { Form, Input, Checkbox, Button, message } from "antd";
 import { userSignUp } from "../../src/redux/actions/signup";
 import { connect } from "react-redux";
 import { withRouter, Redirect } from "react-router-dom";
-import NavbarAfter from "./navbarAfter";
-
-const { Option } = Select;
-// const AutoCompleteOption = AutoComplete.Option;
-
 
 class RegistrationForm extends React.Component {
   state = {
@@ -110,12 +105,12 @@ class RegistrationForm extends React.Component {
     };
 
     return this.state.isSuccess === true ? (
-      <Redirect to="/" />
+      <Redirect to="/login" />
     ) : (
       <div >
       <Form {...formItemLayout} onSubmit={this.handleSubmit}>
         <Form.Item label="Fullname">
-          {getFieldDecorator("fullname", {
+          {getFieldDecorator("fullName", {
             rules: [
               {
                 required: true,
@@ -166,9 +161,30 @@ class RegistrationForm extends React.Component {
           })(<Input.Password onBlur={this.handleConfirmBlur} />)}
         </Form.Item>
         <Form.Item label="Phone Number">
-          {getFieldDecorator("phone", {
+          {getFieldDecorator("phoneNumber", {
             rules: [
               { required: true, message: "Please input your phone number!" }
+            ]
+          })(<Input />)}
+        </Form.Item>
+        <Form.Item label="Street">
+          {getFieldDecorator("street", {
+            rules: [
+              { required: true, message: "Please input your street address!" }
+            ]
+          })(<Input />)}
+        </Form.Item>
+        <Form.Item label="City">
+          {getFieldDecorator("city", {
+            rules: [
+              { required: true, message: "Please input your city!" }
+            ]
+          })(<Input />)}
+        </Form.Item>
+        <Form.Item label="ZIP Code">
+          {getFieldDecorator("zipcode", {
+            rules: [
+              { required: true, message: "Please input your ZIP code!" }
             ]
           })(<Input />)}
         </Form.Item>
@@ -177,7 +193,7 @@ class RegistrationForm extends React.Component {
             valuePropName: "checked"
           })(
             <Checkbox>
-              I have read the <a href="">agreement</a>
+              I have read the agreement
             </Checkbox>
           )}
         </Form.Item>
