@@ -5,9 +5,15 @@ import jwt from "jsonwebtoken";
 //import { addShipping } from './actions/cartActions'
 
 class Recipe extends Component {
+  state = {
+    decoded: {}
+  };
   componentDidMount() {
     console.log("ini dari recipe", this.props);
     const decoded = jwt.decode(localStorage.getItem("token"));
+    this.setState({
+      decoded
+    });
     console.log(decoded);
   }
 
@@ -22,15 +28,19 @@ class Recipe extends Component {
       this.props.substractShipping();
     }
   };
+
   handleSubmit = event => {
     event.preventDefault();
     console.log("Submitted!");
-    this.props.items.forEach(item => {
-      axios.post(`${process.env.REACT_APP_API_URL}/checkout`, {
-        totalPrice: this.props.total,
-        totalQte: item.quantity,
-        userId: decoded.id
-      });
+    this.props.addedItems.forEach(item => {
+      axios
+        .post(`http://localhost:3000/shop/checkout`, {
+          totalPrice: this.props.total,
+          totalQte: item.quantity,
+          userId: this.state.decoded.id
+        })
+        .then(result => console.log(result))
+        .catch(error => console.log(error));
     });
   };
 
