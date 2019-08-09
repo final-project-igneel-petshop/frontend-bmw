@@ -22,7 +22,7 @@ export const userLogin = data => dispatch => {
       if (res.status === 200) {
         localStorage.setItem("token", res.data.data.token);
         localStorage.setItem("isAuthenticated", true);
-        message.success(`Login as ${`user`}`, 1);
+        message.success(`Login as ${res.data.data.fullName}`, 1);
         history.push("/");
         window.location.reload();
       }

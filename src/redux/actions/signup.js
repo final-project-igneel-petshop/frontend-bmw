@@ -1,5 +1,8 @@
 import axios from "axios";
 import { message } from "antd";
+import {createBrowserHistory} from "history"
+
+const history = createBrowserHistory()
 
 export const signUpBegin = () => ({
   type: "SIGNUP_BEGIN"
@@ -25,12 +28,19 @@ export const userSignUp = payload => {
       .post(`${process.env.REACT_APP_API_URL}/users/register`, payload)
       .then(response => {
         dispatch(signUpSuccess(response));
+        if (response.status === 201){
+          message.success("Account successfully registered");
+          history.push("/login")
+          window.location.reload()
+        }
 
-        message.succes("Account successfully registered");
-      })
+       
+      }) 
       .catch(error => {
         dispatch(signUpError(error));
         message.error("Registration has failed");
+        console.log(error);
+        
       });
   };
 };

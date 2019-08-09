@@ -38,10 +38,11 @@ class Recipe extends Component {
           totalQte: item.quantity,
           userId: this.state.decoded.id,
           catProductId: item.id
-        })
+        },{
+          headers: { "Access-Control-Allow-Origin": "*" }})
         .then(result => {
           this.props.history.push(`/checkout/${this.state.decoded.id}`);
-          window.location.reload();
+          // window.location.reload();
         })
         .catch(error => console.log(error));
     });

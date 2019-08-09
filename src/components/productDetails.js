@@ -1,6 +1,10 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { findOne, addToCart } from "../redux/actions/cart";
+import { Result, Button, Icon, Spin } from "antd";
+import { Link } from "react-router-dom";
+
+const antIcon = <Icon className="loading" type="loading" spin />;
 
 class Details extends Component {
   state = {
@@ -52,12 +56,28 @@ class Details extends Component {
                   <i className="material-icons">shopping_cart</i> Add to Cart
                 </button>
               ) : (
-                <div>Silahkan menuju cart dipojok kanan atas</div>
+                // <div>Silahkan menuju cart dipojok kanan atas</div>
+                <Result
+                  style={{ border: "3px solid black" }}
+                  status="success"
+                  title="Successfully added your item to cart"
+                  // subTitle="Order number: 2017182818828182881 Cloud server configuration takes 1-5 minutes, please wait."
+                  extra={[
+                    <Button type="primary" key="console">
+                      <Link to="/shop">Back to Shop</Link>
+                    </Button>,
+                    <Button key="buy">
+                      <Link to="/cart">Go to Cart</Link>
+                    </Button>
+                  ]}
+                />
               )}
             </div>
           </div>
         ) : (
-          "Loading"
+
+          <Spin className= "loading" indicator={antIcon} style={{ textAlign: "center" }} />
+          // "Loading"
         )}
       </Fragment>
     );

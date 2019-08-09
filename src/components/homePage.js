@@ -1,52 +1,28 @@
 import React, { Component } from "react";
 import M from "materialize-css";
 import { Link } from "react-router-dom";
-import "materialize-css/dist/css/materialize.min.css";
+// import "materialize-css/dist/css/materialize.min.css";
 import ImageOne from "../images/homepageCat.jpg";
 import ImageTwo from "../images/homepageDog.jpg";
+import { Carousel } from "antd";
 
 class HomePage extends Component {
-  componentDidMount() {
-    const options = {
-      duration: 300,
-      onCycleTo: () => {
-        console.log("New Slide");
-      }
-    };
-    const test = {
-      fullWidth: true,
-      indicators: true
-    };
-    M.Carousel.init(this.Carousel, options, test);
+  onChange(a, b, c) {
+    console.log(a, b, c);
   }
   render() {
     return (
       <div>
-        <div
-          ref={Carousel => {
-            this.Carousel = Carousel;
-          }}
-          className="carousel"
-          style={{ height: "75%" }}
-        >
-          <div
-            className="carousel carousel-slider"
-            style={{ height: "1000px" }}
-          >
-            <div className="carousel-fixed-item center" />
-            <div className="carousel-item red white-text" href="#one!">
-              <Link to="/shop">
-              <img src={ImageOne} alt="cutty-cat" />
-              </Link>
-              <div className="overlay">CATS</div>
-            </div>
-
-            <div className="carousel-item amber white-text" href="#two!">
-              {/* <h2>DOGS</h2> */}
-              <img src={ImageTwo} alt="cutty-dog" />
-            </div>
+        <Carousel>
+          <div>
+            <Link to="/shop">
+            <img src={ImageOne} alt="cat" />
+            </Link>
           </div>
-        </div>
+          <div>
+            <img src={ImageTwo} alt="cat" />
+          </div>
+        </Carousel>
         <div style={{ backgroundColor: "rgba(0,0,0,.10)", opacity: "0.5" }}>
           <h1
             style={{
@@ -82,5 +58,53 @@ class HomePage extends Component {
     );
   }
 }
+
+// class HomePage extends Component {
+//   componentDidMount() {
+//     const options = {
+//       duration: 300,
+//       onCycleTo: () => {
+//         console.log("New Slide");
+//       }
+//     };
+//     const test = {
+//       fullWidth: true,
+//       indicators: true
+//     };
+//     M.Carousel.init(this.Carousel, options, test);
+//   }
+//   render() {
+//     return (
+//       <div>
+//         <div
+//           ref={Carousel => {
+//             this.Carousel = Carousel;
+//           }}
+//           className="carousel"
+//           style={{ height: "75%" }}
+//         >
+//           <div
+//             className="carousel carousel-slider"
+//             style={{ height: "1000px" }}
+//           >
+//             <div className="carousel-fixed-item center" />
+//             <div className="carousel-item red white-text" href="#one!">
+//               <Link to="/shop">
+//               <img src={ImageOne} alt="cutty-cat" />
+//               </Link>
+//               <div className="overlay">CATS</div>
+//             </div>
+
+//             <div className="carousel-item amber white-text" href="#two!">
+//               {/* <h2>DOGS</h2> */}
+//               <img src={ImageTwo} alt="cutty-dog" />
+//             </div>
+//           </div>
+//         </div>
+//
+//       </div>
+//     );
+//   }
+// }
 
 export default HomePage;
