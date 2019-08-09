@@ -5,12 +5,14 @@ import jwt from "jsonwebtoken";
 import { withRouter } from "react-router-dom";
 //import { addShipping } from './actions/cartActions'
 
-class Recipe extends Component {
+class RecipeDog extends Component {
   state = {
     decoded: {}
   };
 
   componentDidMount() {
+    console.log(this.props);
+    
     const decoded = jwt.decode(localStorage.getItem("token"));
     this.setState({
       decoded
@@ -31,13 +33,13 @@ class Recipe extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    this.props.addedItems.forEach(item => {
+    this.props.addedDogProductsItems.forEach(item => {
       axios
         .post(`${process.env.REACT_APP_API_URL}/shop/checkout`, {
           totalPrice: this.props.total,
           totalQte: item.quantity,
           userId: this.state.decoded.id,
-          catProductId: item.id
+          dogProductId: item.id
         })
         .then(result => {
           this.props.history.push(`/checkout/${this.state.decoded.id}`);
@@ -82,9 +84,8 @@ const mapStateToProps = state => {
   console.log(state);
   
   return {
-    addedItems: state.cart.addedItems,
-    total: state.cart.total,
-    addedDogProductsItems: state.cart.addedDogProductsItems
+    total: state.dogCart.total,
+    addedDogProductsItems: state.dogCart.addedDogProductsItems
   };
 };
 
@@ -103,5 +104,5 @@ export default withRouter(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(Recipe)
+  )(RecipeDog)
 );

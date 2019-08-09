@@ -1,40 +1,31 @@
-import {
-  ADD_TO_CART,
-  REMOVE_ITEM,
-  SUB_QUANTITY,
-  ADD_QUANTITY,
-  GET_ITEM,
-  FIND_ONE,
-  CHECK_OUT,
-  GET_DOG_ITEM
-} from "./cart-type";
+import { GET_ITEM, FIND_ONE, CHECK_OUT, GET_DOG_ITEM } from "./cart-type";
 import axios from "axios";
 
-export const addToCart = id => {
+export const addToCartDog = id => {
   return {
-    type: ADD_TO_CART,
+    type: "ADD_TO_CART_DOG",
     id
   };
 };
 
 //remove item action
-export const removeItem = id => {
+export const removeItemDog = id => {
   return {
-    type: REMOVE_ITEM,
+    type: "REMOVE_ITEM_DOG",
     id
   };
 };
 //subtract qt action
-export const subtractQuantity = id => {
+export const subtractQuantityDog = id => {
   return {
-    type: SUB_QUANTITY,
+    type: "SUB_QUANTITY_DOG",
     id
   };
 };
 //add qt action
-export const addQuantity = id => {
+export const addQuantityDog = id => {
   return {
-    type: ADD_QUANTITY,
+    type: "ADD_QUANTITY_DOG",
     id
   };
 };

@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import M from "materialize-css";
 import { Link } from "react-router-dom";
 import "materialize-css/dist/css/materialize.min.css";
-import ImageOne from "../images/cat.jpg";
-import ImageTwo from "../images/dog.jpg";
+import ImageOne from "../images/homepageCat.jpg";
+import ImageTwo from "../images/homepageDog.jpg";
 
 class HomePage extends Component {
   componentDidMount() {
@@ -27,23 +27,17 @@ class HomePage extends Component {
             this.Carousel = Carousel;
           }}
           className="carousel"
-          style={{ height: "100%" }}
+          style={{ height: "75%" }}
         >
           <div
-            className="carousel carousel-slider center"
-            style={{ height: "700px" }}
+            className="carousel carousel-slider"
+            style={{ height: "1000px" }}
           >
-            <div className="carousel-fixed-item center">
-              <Link
-                to="/shop"
-                className="btn waves-effect white grey-text darken-text-2"
-              >
-                Shop
-              </Link>
-            </div>
+            <div className="carousel-fixed-item center" />
             <div className="carousel-item red white-text" href="#one!">
-              {/* <h2>CATS</h2> */}
+              <Link to="/shop">
               <img src={ImageOne} alt="cutty-cat" />
+              </Link>
               <div className="overlay">CATS</div>
             </div>
 

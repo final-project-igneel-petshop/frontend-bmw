@@ -1,26 +1,26 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { addToCart, getItem } from "../redux/actions/cart";
+import { addToCartDog, getDogItem } from "../redux/actions/dogCart";
 
-class Home extends Component {
+class DogShop extends Component {
   handleClick = id => {
-    this.props.addToCart(id);
+    this.props.addToCartDog(id);
   };
 
   componentDidMount() {
-    this.props.getItem();
+    this.props.getDogItem();
   }
 
   render() {
-    let itemList = this.props.items.map(item => {
+    let itemList = this.props.dogProducts.map(item => {
       return (
         <div className="card" key={item.id}>
           <div className="card-image">
-            <Link to={`/product/${item.id}`}>
+            <Link to={`/product-dog-details/${item.id}`}>
               <img
                 src={`${process.env.REACT_APP_API_URL}${item.imagePath}`}
-                alt="cutty-cat"
+                alt="cutty-dog"
               />
             </Link>
 
@@ -47,19 +47,20 @@ class Home extends Component {
 
     return (
       <div className="container">
-        <h2 className="center">Cat Food</h2>
+        <h2 className="center">Dog Food</h2>
         <div className="box">{itemList}</div>
       </div>
     );
   }
 }
+
 const mapStateToProps = state => {
   return {
-    items: state.cart.items
+    dogProducts: state.cart.dogProducts
   };
 };
 
 export default connect(
   mapStateToProps,
-  { addToCart, getItem }
-)(Home);
+  { addToCartDog, getDogItem }
+)(DogShop);

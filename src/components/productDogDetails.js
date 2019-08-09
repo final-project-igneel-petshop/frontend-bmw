@@ -1,8 +1,10 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import { findOne, addToCart } from "../redux/actions/cart";
 
-class Details extends Component {
+import { addToCart } from "../redux/actions/cart";
+import { getDogsDetail } from "../redux/actions/getDogDetails";
+
+class DogDetailsProduct extends Component {
   state = {
     getToCart: false
   };
@@ -15,33 +17,36 @@ class Details extends Component {
   };
 
   componentDidMount() {
-    this.props.findOne(parseInt(this.props.match.params.id));
+    this.props.getDogsDetail(parseInt(this.props.match.params.id));
   }
 
   render() {
     return (
       <Fragment>
-        {this.props.items.length !== 0 ? (
-          <div key={this.props.items[0].id} className="column">
+        {this.props.dogProducts.length !== 0 ? (
+          <div
+            key={this.props.dogProducts[0].data.product.id}
+            className="column"
+          >
             <div>
               <img
                 src={`${process.env.REACT_APP_API_URL}${
-                  this.props.items[0].imagePath
+                  this.props.dogProducts[0].data.product.imagePath
                 }`}
                 alt="product"
               />
             </div>
             <div>
-              <h3>{this.props.items[0].title}</h3>
-              <p> {this.props.items[0].description}</p>
+              <h3>{this.props.dogProducts[0].data.product.title}</h3>
+              <p> {this.props.dogProducts[0].data.product.description}</p>
               <p>
-                <b>Price: Rp {this.props.items[0].price}</b>
+                <b>Price: Rp {this.props.dogProducts[0].data.product.price}</b>
               </p>
               {!this.state.getToCart ? (
                 <button
                   className="waves-effect waves-light #ee6e73 red lighten-3 btn"
                   onClick={() => {
-                    this.handleClick(this.props.items[0].id);
+                    this.handleClick(this.props.dogProducts[0].data.product.id);
                   }}
                   style={{
                     display: "flex",
@@ -66,11 +71,11 @@ class Details extends Component {
 
 const mapStateToProps = state => {
   return {
-    items: state.cart.itemDetails
+    dogProducts: state.dogDetails.dogDetails
   };
 };
 
 export default connect(
   mapStateToProps,
-  { findOne, addToCart }
-)(Details);
+  { getDogsDetail, addToCart }
+)(DogDetailsProduct);

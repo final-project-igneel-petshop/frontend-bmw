@@ -18,42 +18,31 @@ class RegistrationForm extends React.Component {
     isSuccess: false
   };
 
-  componentDidMount(){
-    console.log(this.props);
-    
-  }
-
   handleSubmit = e => {
     e.preventDefault();
-    
+
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
-        console.log("Received values of form: ", values);
-        
-          this.props.userSignUp({
-            fullName: values.fullName,
-            email: values.email,
-            phoneNumber: values.phoneNumber,
-            password: values.password,
-            // confirmPassword: values.confirmPassword
-            street: values.street,
-            city: values.city,
-            zipcode: values.zipcode
-          });
-          // this.props.history.push("/");
-        } else {
-          message.error("All fields must be entered");
-        }
-      })
-
+        this.props.userSignUp({
+          fullName: values.fullName,
+          email: values.email,
+          phoneNumber: values.phoneNumber,
+          password: values.password,
+          // confirmPassword: values.confirmPassword
+          street: values.street,
+          city: values.city,
+          zipcode: values.zipcode
+        });
+        // this.props.history.push("/");
+      } else {
+        message.error("All fields must be entered");
+      }
+    });
   };
   handleChange = e => {
-    this.setState(
-      {
-        [e.target.name]: e.target.value
-      }, 
-      console.log(this.state)
-    );
+    this.setState({
+      [e.target.name]: e.target.value
+    });
   };
 
   handleConfirmBlur = e => {
@@ -107,102 +96,96 @@ class RegistrationForm extends React.Component {
     return this.state.isSuccess === true ? (
       <Redirect to="/login" />
     ) : (
-      <div >
-      <Form {...formItemLayout} onSubmit={this.handleSubmit}>
-        <Form.Item label="Fullname">
-          {getFieldDecorator("fullName", {
-            rules: [
-              {
-                required: true,
-                message: "Please input your Fullname!"
-              }
-            ]
-          })(<Input />)}
-        </Form.Item>
+      <div>
+        <Form {...formItemLayout} onSubmit={this.handleSubmit}>
+          <Form.Item label="Fullname">
+            {getFieldDecorator("fullName", {
+              rules: [
+                {
+                  required: true,
+                  message: "Please input your Fullname!"
+                }
+              ]
+            })(<Input />)}
+          </Form.Item>
 
-        <Form.Item label="E-mail">
-          {getFieldDecorator("email", {
-            rules: [
-              {
-                type: "email",
-                message: "The input is not valid E-mail!"
-              },
-              {
-                required: true,
-                message: "Please input your E-mail!"
-              }
-            ]
-          })(<Input />)}
-        </Form.Item>
-        <Form.Item  label="Password" hasFeedback>
-          {getFieldDecorator("password", {
-            rules: [
-              {
-                required: true,
-                message: "Please input your password!"
-              },
-              {
-                validator: this.validateToNextPassword
-              }
-            ]
-          })(<Input.Password />)}
-        </Form.Item>
-        <Form.Item label="Confirm Password" hasFeedback>
-          {getFieldDecorator("confirm", {
-            rules: [
-              {
-                required: true,
-                message: "Please confirm your password!"
-              },
-              {
-                validator: this.compareToFirstPassword
-              }
-            ]
-          })(<Input.Password onBlur={this.handleConfirmBlur} />)}
-        </Form.Item>
-        <Form.Item label="Phone Number">
-          {getFieldDecorator("phoneNumber", {
-            rules: [
-              { required: true, message: "Please input your phone number!" }
-            ]
-          })(<Input />)}
-        </Form.Item>
-        <Form.Item label="Street">
-          {getFieldDecorator("street", {
-            rules: [
-              { required: true, message: "Please input your street address!" }
-            ]
-          })(<Input />)}
-        </Form.Item>
-        <Form.Item label="City">
-          {getFieldDecorator("city", {
-            rules: [
-              { required: true, message: "Please input your city!" }
-            ]
-          })(<Input />)}
-        </Form.Item>
-        <Form.Item label="ZIP Code">
-          {getFieldDecorator("zipcode", {
-            rules: [
-              { required: true, message: "Please input your ZIP code!" }
-            ]
-          })(<Input />)}
-        </Form.Item>
-        <Form.Item style={{padding:"0px"}}{...tailFormItemLayout}>
-          {getFieldDecorator("agreement", {
-            valuePropName: "checked"
-          })(
-            <Checkbox>
-              I have read the agreement
-            </Checkbox>
-          )}
-        </Form.Item>
-        <Form.Item {...tailFormItemLayout}>
-          <Button type="primary" htmlType="submit">
-            Sign Up
-          </Button>
-        </Form.Item>
-      </Form>
+          <Form.Item label="E-mail">
+            {getFieldDecorator("email", {
+              rules: [
+                {
+                  type: "email",
+                  message: "The input is not valid E-mail!"
+                },
+                {
+                  required: true,
+                  message: "Please input your E-mail!"
+                }
+              ]
+            })(<Input />)}
+          </Form.Item>
+          <Form.Item label="Password" hasFeedback>
+            {getFieldDecorator("password", {
+              rules: [
+                {
+                  required: true,
+                  message: "Please input your password!"
+                },
+                {
+                  validator: this.validateToNextPassword
+                }
+              ]
+            })(<Input.Password />)}
+          </Form.Item>
+          <Form.Item label="Confirm Password" hasFeedback>
+            {getFieldDecorator("confirm", {
+              rules: [
+                {
+                  required: true,
+                  message: "Please confirm your password!"
+                },
+                {
+                  validator: this.compareToFirstPassword
+                }
+              ]
+            })(<Input.Password onBlur={this.handleConfirmBlur} />)}
+          </Form.Item>
+          <Form.Item label="Phone Number">
+            {getFieldDecorator("phoneNumber", {
+              rules: [
+                { required: true, message: "Please input your phone number!" }
+              ]
+            })(<Input />)}
+          </Form.Item>
+          <Form.Item label="Street">
+            {getFieldDecorator("street", {
+              rules: [
+                { required: true, message: "Please input your street address!" }
+              ]
+            })(<Input />)}
+          </Form.Item>
+          <Form.Item label="City">
+            {getFieldDecorator("city", {
+              rules: [{ required: true, message: "Please input your city!" }]
+            })(<Input />)}
+          </Form.Item>
+          <Form.Item label="ZIP Code">
+            {getFieldDecorator("zipcode", {
+              rules: [
+                { required: true, message: "Please input your ZIP code!" }
+              ]
+            })(<Input />)}
+          </Form.Item>
+          <Form.Item style={{ padding: "0px" }} {...tailFormItemLayout}>
+            {getFieldDecorator("agreement", {
+              valuePropName: "checked"
+            })(<Checkbox>I have read the agreement</Checkbox>)}
+          </Form.Item>
+          <Form.Item {...tailFormItemLayout}>
+            <Button type="primary" htmlType="submit">
+              Sign Up
+            </Button>
+          </Form.Item>
+        </Form>
       </div>
     );
   }
