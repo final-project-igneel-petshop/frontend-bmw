@@ -61,7 +61,7 @@
 
 .ant-carousel .slick-slide {
   text-align: center;
-  height: 500px;
+  height: 700px;
   line-height: 0px;
   background: #364d79;
   overflow: hidden;
@@ -74,4 +74,8 @@
 .checkout {
   margin: 50px;
   font-family: "Open Sans Condensed", sans-serif;
+}
+
+.image-carousel img {
+  width: 100%;
 }

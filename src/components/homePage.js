@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import M from "materialize-css";
-import { Link } from "react-router-dom";
+// import M from "materialize-css";
+// import { Link } from "react-router-dom";
 // import "materialize-css/dist/css/materialize.min.css";
 import ImageOne from "../images/homepageCat.jpg";
 import ImageTwo from "../images/homepageDog.jpg";
@@ -13,11 +13,11 @@ class HomePage extends Component {
   render() {
     return (
       <div>
-        <Carousel>
-          <div>
-            <Link to="/shop">
-            <img src={ImageOne} alt="cat" />
-            </Link>
+        <Carousel autoplay>
+          <div className="image-carousel">
+            {/* <Link to="/shop"> */}
+              <img src={ImageOne} alt="cat" />
+            {/* </Link> */}
           </div>
           <div>
             <img src={ImageTwo} alt="cat" />

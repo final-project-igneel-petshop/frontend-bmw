@@ -21,21 +21,21 @@ const Navbar = props => {
       }}
       className="nav-wrapper"
     >
-      <div className="container">
-        <Link to="/" className="brand-logo">
+      <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
+        <Link to="/">
           <img
             src={logo}
             alt="logo"
             style={{
-              width: "100px",
-              height: "100px",
-              marginBottom: "30px",
-              paddingBottom: "10px"
+              // width: "100px",
+              height: "100%",
+              // marginBottom: "30px",
+              // paddingBottom: "10px"
             }}
           />
         </Link>
 
-        <ul className="right">
+        <ul >
           {isAuthenticated ? (
             <Fragment>
               <li>
