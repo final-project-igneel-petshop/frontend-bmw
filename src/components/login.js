@@ -2,6 +2,7 @@ import React from "react";
 import { Form, Icon, Input, Button, Checkbox } from "antd";
 import { connect } from "react-redux";
 import { withRouter, Redirect } from "react-router-dom";
+
 import { userLogin } from "../../src/redux/actions/login";
 
 class NormalLoginForm extends React.Component {
@@ -38,7 +39,9 @@ class NormalLoginForm extends React.Component {
               rules: [{ required: true, message: "Please input your email!" }]
             })(
               <Input
-                prefix={<Icon type="email" />}
+                prefix={
+                  <Icon type="mail" style={{ color: "rgba(0,0,0,.25)" }} />
+                }
                 placeholder="Email"
                 onChange={this.handleChanges}
               />
@@ -69,7 +72,6 @@ class NormalLoginForm extends React.Component {
               Forgot password
             </a>
             <Button
-              style={{ display: "flex", alignContent: "center" }}
               type="primary"
               htmlType="submit"
               className="login-form-button"

@@ -1,8 +1,9 @@
 import React from "react";
 import { Form, Input, Checkbox, Button, message } from "antd";
-import { userSignUp } from "../../src/redux/actions/signup";
 import { connect } from "react-redux";
 import { withRouter, Redirect } from "react-router-dom";
+
+import { userSignUp } from "../../src/redux/actions/signup";
 
 class RegistrationForm extends React.Component {
   state = {
@@ -71,6 +72,7 @@ class RegistrationForm extends React.Component {
     // const { autoCompleteResult } = this.state;
 
     const formItemLayout = {
+      labelAlign: "left",
       labelCol: {
         xs: { span: 24 },
         sm: { span: 8 }
@@ -96,7 +98,7 @@ class RegistrationForm extends React.Component {
     return this.state.isSuccess === true ? (
       <Redirect to="/login" />
     ) : (
-      <div>
+      <div style={{ width: "500px" }}>
         <Form {...formItemLayout} onSubmit={this.handleSubmit}>
           <Form.Item label="Fullname">
             {getFieldDecorator("fullName", {
@@ -194,6 +196,7 @@ class RegistrationForm extends React.Component {
 const WrappedRegistrationForm = Form.create({ name: "register" })(
   RegistrationForm
 );
+
 const mapStateToProps = state => {
   return {
     state

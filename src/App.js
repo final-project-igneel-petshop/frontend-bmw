@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import "./App.css";
-import "./index.css";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
